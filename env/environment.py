@@ -19,7 +19,7 @@ class SmartInboxEnv:
             "hard": HardTask()
         }
 
-        # Sample dataset 
+        # Sample dataset
         self.emails = [
             {
                 "email_id": "E001",
@@ -33,7 +33,6 @@ class SmartInboxEnv:
                     "action": "reply"
                 }
             },
-            
             {
                 "email_id": "E002",
                 "sender": "spam@offers.com",
@@ -141,127 +140,6 @@ class SmartInboxEnv:
                     "classification": "important",
                     "action": "reply"
                 }
-            },
-            {
-                "email_id": "E011",
-                "sender": "alerts@server.com",
-                "subject": "High CPU usage detected",
-                "body": "Server CPU usage exceeded 95%. Immediate action required.",
-                "timestamp": "2026-04-04T20:00:00",
-                "priority_hint": "high",
-                "ground_truth": {
-                    "classification": "important",
-                    "action": "escalate"
-                }
-            },
-            {
-                "email_id": "E012",
-                "sender": "colleague@company.com",
-                "subject": "Can you review this doc?",
-                "body": "Please review the attached document when you have time.",
-                "timestamp": "2026-04-04T21:00:00",
-                "priority_hint": "medium",
-                "ground_truth": {
-                    "classification": "normal",
-                    "action": "ignore"
-                }
-            },
-            {
-                "email_id": "E013",
-                "sender": "security@bank.com",
-                "subject": "Suspicious login attempt",
-                "body": "We detected a login from a new device. Please confirm if this was you.",
-                "timestamp": "2026-04-04T22:00:00",
-                "priority_hint": "high",
-                "ground_truth": {
-                    "classification": "important",
-                    "action": "reply"
-                }
-            
-            },
-            {
-                "email_id": "E014",
-                "sender": "promo@travel.com",
-                "subject": "Limited time flight discounts",
-                "body": "Book your tickets now and save up to 50% on flights.",
-                "timestamp": "2026-04-04T23:00:00",
-                "priority_hint": "low",
-                "ground_truth": {
-                    "classification": "spam",
-                    "action": "ignore"
-                }
-            },
-            {
-                "email_id": "E015",
-                "sender": "manager@company.com",
-                "subject": "Urgent: Client meeting prep",
-                "body": "Please prepare the slides for tomorrow’s client meeting ASAP.",
-                "timestamp": "2026-04-05T09:00:00",
-                "priority_hint": "high",
-                "ground_truth": {
-                    "classification": "important",
-                    "action": "reply"
-                }
-            },
-            {
-                "email_id": "E016",
-                "sender": "no-reply@subscriptions.com",
-                "subject": "Your subscription is expiring",
-                "body": "Renew your subscription to continue enjoying our services.",
-                "timestamp": "2026-04-05T10:00:00",
-                "priority_hint": "medium",
-                "ground_truth": {
-                    "classification": "normal",
-                    "action": "ignore"
-                }
-            },
-            {
-                "email_id": "E017",
-                "sender": "alerts@security.com",
-                "subject": "Multiple failed login attempts",
-                "body": "We detected multiple failed login attempts. Please secure your account.",
-                "timestamp": "2026-04-05T11:00:00",
-                "priority_hint": "high",
-                "ground_truth": {
-                    "classification": "important",
-                    "action": "escalate"
-                }
-            },
-            {
-                "email_id": "E018",
-                "sender": "friend2@gmail.com",
-                "subject": "Movie tonight?",
-                "body": "Hey, want to catch a movie later today?",
-                "timestamp": "2026-04-05T12:00:00",
-                "priority_hint": "low",
-                "ground_truth": {
-                    "classification": "normal",
-                    "action": "ignore"
-                }
-            },
-            {
-                "email_id": "E019",
-                "sender": "support@ecommerce.com",
-                "subject": "Order delayed",
-                "body": "Your order has been delayed due to unforeseen circumstances.",
-                "timestamp": "2026-04-05T13:00:00",
-                "priority_hint": "medium",
-                "ground_truth": {
-                    "classification": "important",
-                    "action": "reply"
-                }
-            },
-            {
-                "email_id": "E020",
-                "sender": "offers@casino.com",
-                "subject": "Win big rewards now!",
-                "body": "Join now and win exciting prizes instantly.",
-                "timestamp": "2026-04-05T14:00:00",
-                "priority_hint": "low",
-                "ground_truth": {
-                    "classification": "spam",
-                    "action": "ignore"
-                }
             }
         ]
 
@@ -305,8 +183,8 @@ class SmartInboxEnv:
         # Compute score using task-specific grader
         score = task.grade(action, gt)
 
-        # Clamp score between 0 and 1
-        score = max(0, min(1, score))
+        # force score strictly between (0,1)
+        score = max(0.05, min(0.95, float(score)))
 
         reward = EmailReward(
             score=score,
