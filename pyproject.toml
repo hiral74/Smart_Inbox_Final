@@ -1,0 +1,17 @@
+[project]
+name = "smart-inbox-openenv"
+version = "0.1.0"
+description = "Smart Inbox OpenEnv environment"
+authors = [
+    { name = "Hiral Dharamshi" },
+    { name = "Akshay Ravikumar" }
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "openai>=1.0.0"
+]
+
+[tool.openenv]
+entry_point = "env.environment:SmartInboxEnv"
