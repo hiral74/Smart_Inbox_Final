@@ -1,26 +1,18 @@
 from fastapi import FastAPI
 from env.environment import SmartInboxEnv
 from env.models import EmailAction
-from inference import main   # ✅ ADD THIS IMPORT
 
 app = FastAPI()
 
-@app.on_event("startup")
-def startup_event():
-    print("SERVER STARTED", flush=True)
-
 env = SmartInboxEnv()
 
-# -----------------------------
-# Routes
-# -----------------------------
 
 @app.get("/")
 def root():
     return {"message": "Smart Inbox OpenEnv running"}
 
 
-@app.get("/reset")
+@app.post("/reset")
 def reset(task: str = "easy"):
     obs = env.reset(task)
     return obs.dict()
@@ -37,10 +29,3 @@ def step(action: dict):
         "done": done,
         "info": info
     }
-
-
-# ✅ ADD THIS AT THE BOTTOM
-@app.get("/run")
-def run_agent():
-    main()
-    return {"status": "agent finished"}
