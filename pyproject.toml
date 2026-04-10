@@ -3,15 +3,20 @@ name = "smart-inbox-openenv"
 version = "0.1.0"
 description = "Smart Inbox OpenEnv environment"
 authors = [
-    { name = "Hiral Dharamshi", email = "hiral70406@gmail.com.com" },
-    { name = "Akshay Ravikumar", email = "akshayshruthi212@gmail.com" }
+    { name = "Hiral Dharamshi", email = "hiral@example.com" },
+    { name = "Akshay Ravikumar", email = "akshay@example.com" }
 ]
+
 dependencies = [
     "fastapi",
     "uvicorn",
     "pydantic",
-    "openai>=1.0.0"
+    "openai>=1.0.0",
+    "openenv-core>=0.2.0"
 ]
+
+[project.scripts]
+server = "server.app:app"
 
 [tool.openenv]
 entry_point = "env.environment:SmartInboxEnv"
