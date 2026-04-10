@@ -1,8 +1,5 @@
 ---
 title: Smart Inbox Env
-emoji: 🐨
-colorFrom: yellow
-colorTo: indigo
 sdk: docker
 pinned: false
 license: mit
