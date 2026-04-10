@@ -1,5 +1,6 @@
 from env.environment import SmartInboxEnv
 from env.models import EmailAction
+from app import app
 
 app = FastAPI()
 env = SmartInboxEnv()
