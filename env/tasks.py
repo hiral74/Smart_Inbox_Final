@@ -10,8 +10,8 @@ class EasyTask:
 
     def grade(self, action: EmailAction, ground_truth: Dict[str, Any]) -> float:
         if action.classification == ground_truth["classification"]:
-            return 1.0
-        return 0.0
+            return 1
+        return 0
 
 
 # -----------------------------
@@ -21,7 +21,7 @@ class MediumTask:
     name = "medium_classification_action"
 
     def grade(self, action: EmailAction, ground_truth: Dict[str, Any]) -> float:
-        score = 0.0
+        score = 0
 
         if action.classification == ground_truth["classification"]:
             score += 0.5
@@ -39,7 +39,7 @@ class HardTask:
     name = "hard_full_email_handling"
 
     def grade(self, action: EmailAction, ground_truth: Dict[str, Any]) -> float:
-        score = 0.0
+        score = 0
 
         # Classification
         if action.classification == ground_truth["classification"]:
