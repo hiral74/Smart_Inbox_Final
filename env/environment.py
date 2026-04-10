@@ -306,7 +306,7 @@ class SmartInboxEnv:
         score = task.grade(action, gt)
 
         # Clamp score between 0 and 1
-        score = max(0.0, min(1.0, score))
+        score = max(0, min(1, score))
 
         reward = EmailReward(
             score=score,
