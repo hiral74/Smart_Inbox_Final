@@ -181,9 +181,10 @@ smart_inbox_env/
 │   ├── environment.py   # Core environment logic
 │   ├── tasks.py         # Tasks and graders
 │
-├── baseline.py          # Baseline agent
+├── inference.py          # Baseline agent
 ├── openenv.yaml         # OpenEnv configuration
 ├── Dockerfile           # Container setup
+|── app.py               # contains API server
 ├── README.md            # Documentation
 ```
 
