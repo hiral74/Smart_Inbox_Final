@@ -3,8 +3,8 @@ name = "smart-inbox-openenv"
 version = "0.1.0"
 description = "Smart Inbox OpenEnv environment"
 authors = [
-    { name = "Hiral Dharamshi" },
-    { name = "Akshay Ravikumar" }
+    { name = "Hiral Dharamshi", email = "hiral70406@gmail.com.com" },
+    { name = "Akshay Ravikumar", email = "akshayshruthi212@gmail.com" }
 ]
 dependencies = [
     "fastapi",
