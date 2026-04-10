@@ -186,6 +186,7 @@ smart_inbox_env/
 ├── Dockerfile           # Container setup
 |── app.py               # contains API server
 ├── README.md            # Documentation
+├── pyproject.toml       #defines the project metadata            
 ```
 
 ## Key Features
